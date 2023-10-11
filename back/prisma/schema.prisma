@@ -13,19 +13,21 @@ datasource db {
 model User {
   id          String        @id
   name        String
-  email       String
+  email       String        @unique
   cpf         String
   phone       String
   birthdate   DateTime
   type        String
   password    String
   Anouncement Anouncement[]
+  address     Address?
+  Comments    Comments[]
 
   @@map("Users")
 }
 
 model Anouncement {
-  id          String   @id
+  id          String     @id
   brand       String
   model       String
   year        String
@@ -36,6 +38,42 @@ model Anouncement {
   price       Decimal
   description String
   adStatus    Boolean
-  user        User     @relation(fields: [user_id], references: [id])
+  user        User       @relation(fields: [user_id], references: [id])
   user_id     String
+  Comments    Comments[]
+  images      images[]
+}
+
+model Address {
+  id         String @id
+  zipcode    String
+  state      String
+  city       String
+  street     String
+  number     Int
+  complement String
+  user       User   @relation(fields: [user_id], references: [id])
+  user_id    String @unique
+}
+
+model Comments {
+  id             String      @id
+  text           String
+  user           User        @relation(fields: [user_id], references: [id])
+  user_id        String
+  anouncement    Anouncement @relation(fields: [anouncement_id], references: [id])
+  anouncement_id String
+}
+
+model images {
+  id             String      @id
+  cover_url      String
+  img_url1       String?
+  img_url2       String?
+  img_url3       String?
+  img_url4       String?
+  img_url5       String?
+  img_url6       String?
+  anouncement    Anouncement @relation(fields: [anouncement_id], references: [id])
+  anouncement_id String
 }
