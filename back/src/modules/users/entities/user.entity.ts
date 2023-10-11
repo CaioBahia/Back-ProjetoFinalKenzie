@@ -6,12 +6,11 @@ export class User {
   name: string;
   email: string;
   cpf: string;
-  phone: number;
+  phone: string;
   birthdate: Date;
   type: string;
   @Exclude()
   password: string;
-  addressID: string;
 
   constructor() {
     this.id = randomUUID();
