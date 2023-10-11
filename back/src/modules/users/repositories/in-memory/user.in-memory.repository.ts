@@ -3,7 +3,9 @@ import { CreateUserDto } from '../../dto/create-user.dto';
 import { User } from '../../entities/user.entity';
 import { UsersRepository } from '../user.repository';
 import { UpdateUserDto } from '../../dto/update-user.dto';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class UsersInMemoryRepository implements UsersRepository {
   private database: User[] = [];
   async create(data: CreateUserDto): Promise<User> {
@@ -17,6 +19,11 @@ export class UsersInMemoryRepository implements UsersRepository {
 
   async findAll(): Promise<User[]> {
     return plainToInstance(User, this.database);
+  }
+
+  async findByEmail(email: string): Promise<User> {
+    const user = this.database.find((user) => user.email === email);
+    return user;
   }
 
   async findById(id: string): Promise<User> {
