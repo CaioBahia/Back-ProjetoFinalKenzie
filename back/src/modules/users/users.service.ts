@@ -6,7 +6,6 @@ import {
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersRepository } from './repositories/user.repository';
-import { use } from 'passport';
 
 @Injectable()
 export class UsersService {
