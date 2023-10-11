@@ -1,3 +1,5 @@
+import { hashSync } from 'bcryptjs';
+import { Transform } from 'class-transformer';
 import {
   IsEmail,
   IsNotEmpty,
@@ -40,9 +42,13 @@ export class CreateUserDto {
   type: string;
 
   @IsString()
-  @MinLength(4)
+  @IsNotEmpty()
+  @MinLength(8)
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     message: 'password too weak',
+  })
+  @Transform(({ value }: { value: string }) => hashSync(value, 10), {
+    groups: ['transform'],
   })
   password: string;
 }
