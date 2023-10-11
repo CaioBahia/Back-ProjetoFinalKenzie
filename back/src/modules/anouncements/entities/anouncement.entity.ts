@@ -12,7 +12,7 @@ export class Anouncement {
   price: number;
   description: string;
   adStatus: boolean;
-  user_id?: string;
+  user_id: string;
 
   constructor() {
     this.id = randomUUID();
