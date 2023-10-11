@@ -8,18 +8,49 @@ import {
   IsOptional,
   Matches,
   IsISO8601,
+  IsBoolean,
+  IsNumber,
 } from 'class-validator';
 
 export class CreateAnouncementDto {
+  @IsString()
+  @IsNotEmpty()
   brand: string;
+
+  @IsString()
+  @IsNotEmpty()
   model: string;
-  year: number;
+
+  @IsString()
+  @IsNotEmpty()
+  year: string;
+
+  @IsString()
+  @IsNotEmpty()
   fuel: string;
+
+  @IsNumber()
+  @IsNotEmpty()
   km: number;
+
+  @IsString()
+  @IsNotEmpty()
   color: string;
-  fipe?: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  @IsOptional()
+  fipe: number | null;
+
+  @IsNumber()
+  @IsNotEmpty()
   price: number;
+
+  @IsString()
+  @IsNotEmpty()
   description: string;
-  adStatus: string;
-  user_id?: string;
+
+  @IsBoolean()
+  @IsNotEmpty()
+  adStatus: boolean;
 }

@@ -4,14 +4,14 @@ export class Anouncement {
   readonly id: string;
   brand: string;
   model: string;
-  year: number;
+  year: string;
   fuel: string;
   km: number;
   color: string;
-  fipe?: number;
+  fipe?: number | null;
   price: number;
   description: string;
-  adStatus: string;
+  adStatus: boolean;
   user_id?: string;
 
   constructor() {
