@@ -1,13 +1,8 @@
 import {
-  IsEmail,
   IsNotEmpty,
   IsString,
   MinLength,
   MaxLength,
-  Length,
-  IsOptional,
-  Matches,
-  IsISO8601,
   IsBoolean,
   IsNumber,
 } from 'class-validator';
@@ -15,31 +10,36 @@ import {
 export class CreateAnouncementDto {
   @IsString()
   @IsNotEmpty()
+  @MaxLength(24)
   brand: string;
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(48)
   model: string;
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(9)
   year: string;
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(12)
   fuel: string;
 
   @IsNumber()
   @IsNotEmpty()
+  @MinLength(1)
   km: number;
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(48)
   color: string;
 
   @IsNumber()
   @IsNotEmpty()
-  @IsOptional()
   fipe: number | null;
 
   @IsNumber()
@@ -48,6 +48,7 @@ export class CreateAnouncementDto {
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(255)
   description: string;
 
   @IsBoolean()
