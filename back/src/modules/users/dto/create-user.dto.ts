@@ -9,7 +9,6 @@ import {
   Length,
   IsOptional,
   Matches,
-  IsISO8601,
 } from 'class-validator';
 
 export class CreateUserDto {
@@ -35,8 +34,9 @@ export class CreateUserDto {
   @IsOptional()
   phone: string;
 
-  @IsISO8601()
-  birthdate: Date;
+  @IsString()
+  @IsNotEmpty()
+  birth: string;
 
   @IsString()
   type: string;

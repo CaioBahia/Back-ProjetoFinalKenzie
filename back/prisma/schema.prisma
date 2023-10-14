@@ -16,7 +16,7 @@ model User {
   email       String        @unique
   cpf         String
   phone       String
-  birthdate   DateTime
+  birth   String 
   type        String
   password    String
   Anouncement Anouncement[]

@@ -13,9 +13,11 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     const findUser = await this.userRepository.findByEmail(createUserDto.email);
+
     if (findUser) {
       throw new ConflictException('User Alredy Exists!');
     }
+
     const user = await this.userRepository.create(createUserDto);
     return user;
   }
@@ -43,6 +45,7 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException('User Not Found!');
     }
+
     return user;
   }
 
