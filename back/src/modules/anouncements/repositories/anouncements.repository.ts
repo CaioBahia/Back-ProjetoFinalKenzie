@@ -10,7 +10,7 @@ export abstract class AnouncementsRepository {
 
   abstract findAll(): Promise<Anouncement[]>;
   abstract findById(id: string): Promise<Anouncement | undefined>;
-  abstract findByUser(userId: string): Promise<Anouncement | undefined>;
-  abstract update(data: UpdateAnouncementDto, id: string);
+  abstract findByUserId(user_id: string): Promise<Anouncement[]>;
+  abstract update(data: UpdateAnouncementDto, id: string): Promise<Anouncement>;
   abstract remove(id: string): Promise<void>;
 }

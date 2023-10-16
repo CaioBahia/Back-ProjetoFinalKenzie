@@ -4,12 +4,16 @@ import { PrismaService } from 'src/modules/database/prisma.service';
 import { Anouncement } from '../../entities/anouncement.entity';
 import { CreateAnouncementDto } from '../../dto/create-anouncement.dto';
 import { UpdateAnouncementDto } from '../../dto/update-anouncement.dto';
+import { plainToInstance } from 'class-transformer';
 
 @Injectable()
 export class AnouncementPrismaRepository implements AnouncementsRepository {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: CreateAnouncementDto): Promise<Anouncement> {
+  async create(
+    data: CreateAnouncementDto,
+    user_id: string,
+  ): Promise<Anouncement> {
     const ads = new Anouncement();
     Object.assign(ads, { ...data });
     const newAds = await this.prisma.anouncement.create({
@@ -25,25 +29,38 @@ export class AnouncementPrismaRepository implements AnouncementsRepository {
         price: ads.price,
         description: ads.description,
         adStatus: ads.adStatus,
-        user_id: ads.user_id,
+        user_id,
       },
     });
     return newAds;
   }
 
-  findAll(): Promise<Anouncement[]> {
-    throw new Error('Method not implemented.');
+  async findAll(): Promise<Anouncement[]> {
+    const ads = await this.prisma.anouncement.findMany();
+    return plainToInstance(Anouncement, ads);
   }
-  findById(id: string): Promise<Anouncement> {
-    throw new Error('Method not implemented.');
+  async findById(id: string): Promise<Anouncement> {
+    const ad = await this.prisma.anouncement.findUnique({
+      where: { id },
+    });
+    return ad;
   }
-  findByUser(userId: string): Promise<Anouncement> {
-    throw new Error('Method not implemented.');
+  async findByUserId(user_id: string): Promise<Anouncement[]> {
+    const ads = await this.prisma.anouncement.findMany({
+      where: { user_id },
+    });
+    return ads;
   }
-  update(data: UpdateAnouncementDto, id: string) {
-    throw new Error('Method not implemented.');
+  async update(data: UpdateAnouncementDto, id: string) {
+    const ad = await this.prisma.anouncement.update({
+      where: { id },
+      data: { ...data },
+    });
+    return plainToInstance(Anouncement, ad);
   }
-  remove(id: string): Promise<void> {
-    throw new Error('Method not implemented.');
+  async remove(id: string): Promise<void> {
+    await this.prisma.anouncement.delete({
+      where: { id },
+    });
   }
 }
