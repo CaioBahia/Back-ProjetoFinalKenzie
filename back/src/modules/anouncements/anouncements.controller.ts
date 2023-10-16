@@ -50,7 +50,7 @@ export class AnouncementsController {
     return this.anouncementsService.findById(id);
   }
 
-  @Get(':id')
+  @Get('user/:id')
   findAdByUser(@Param('id') userId: string) {
     return this.anouncementsService.findByUserId(userId);
   }
