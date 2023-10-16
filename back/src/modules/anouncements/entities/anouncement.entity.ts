@@ -8,7 +8,7 @@ export class Anouncement {
   fuel: string;
   km: number;
   color: string;
-  fipe?: number | null;
+  fipe: number | null;
   price: number;
   description: string;
   adStatus: boolean;
