@@ -4,7 +4,9 @@ import { UpdateUserDto } from '../../dto/update-user.dto';
 import { User } from '../../entities/user.entity';
 import { UsersRepository } from '../user.repository';
 import { plainToInstance } from 'class-transformer';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class UsersPrismaRepository implements UsersRepository {
   constructor(private prisma: PrismaService) {}
 
@@ -12,7 +14,16 @@ export class UsersPrismaRepository implements UsersRepository {
     const user = new User();
     Object.assign(user, { ...data });
     const newUser = await this.prisma.user.create({
-      data: { ...user },
+      data: {
+        birth: user.birth,
+        cpf: user.cpf,
+        email: user.email,
+        name: user.name,
+        phone: user.phone,
+        type: user.type,
+        id: user.id,
+        password: user.password,
+      },
     });
     return plainToInstance(User, newUser);
   }
