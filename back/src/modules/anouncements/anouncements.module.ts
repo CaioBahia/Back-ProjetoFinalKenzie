@@ -15,5 +15,6 @@ import { AnouncementPrismaRepository } from './repositories/prisma/anoucements-p
       useClass: AnouncementPrismaRepository,
     },
   ],
+  exports: [AnouncementsService],
 })
 export class AnouncementsModule {}

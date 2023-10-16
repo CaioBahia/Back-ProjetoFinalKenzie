@@ -30,7 +30,6 @@ export class CreateAnouncementDto {
 
   @IsNumber()
   @IsNotEmpty()
-  @MinLength(1)
   km: number;
 
   @IsString()
