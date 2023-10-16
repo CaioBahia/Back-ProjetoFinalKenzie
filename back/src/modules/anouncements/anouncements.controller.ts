@@ -6,7 +6,6 @@ import {
   Patch,
   Param,
   Delete,
-  HttpCode,
   UseGuards,
   Request,
   ForbiddenException,
@@ -16,18 +15,26 @@ import { CreateAnouncementDto } from './dto/create-anouncement.dto';
 import { UpdateAnouncementDto } from './dto/update-anouncement.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { get } from 'http';
+import { UsersService } from '../users/users.service';
 
 @ApiTags('Anouncements')
 @Controller('anouncement')
 export class AnouncementsController {
-  constructor(private readonly anouncementsService: AnouncementsService) {}
+  constructor(
+    private readonly anouncementsService: AnouncementsService,
+    private userService: UsersService,
+  ) {}
 
   @Post('')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  create(@Body() createAnouncementDto: CreateAnouncementDto, @Request() req) {
-    if (req.user.type === 'comprador') {
+  async create(
+    @Body() createAnouncementDto: CreateAnouncementDto,
+    @Request() req,
+  ) {
+    const findUserType = await this.userService.findById(req.user.id);
+
+    if (findUserType.type === 'comprador') {
       throw new ForbiddenException('Invalid Account Type!');
     }
     return this.anouncementsService.create(createAnouncementDto, req.user.id);

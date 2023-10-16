@@ -10,7 +10,10 @@ import { plainToInstance } from 'class-transformer';
 export class AnouncementPrismaRepository implements AnouncementsRepository {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: CreateAnouncementDto): Promise<Anouncement> {
+  async create(
+    data: CreateAnouncementDto,
+    user_id: string,
+  ): Promise<Anouncement> {
     const ads = new Anouncement();
     Object.assign(ads, { ...data });
     const newAds = await this.prisma.anouncement.create({
@@ -26,7 +29,7 @@ export class AnouncementPrismaRepository implements AnouncementsRepository {
         price: ads.price,
         description: ads.description,
         adStatus: ads.adStatus,
-        user_id: ads.user_id,
+        user_id,
       },
     });
     return newAds;
