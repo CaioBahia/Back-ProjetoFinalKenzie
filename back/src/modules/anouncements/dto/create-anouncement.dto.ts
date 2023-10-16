@@ -39,7 +39,6 @@ export class CreateAnouncementDto {
   color: string;
 
   @IsNumber()
-  @IsNotEmpty()
   fipe: number | null;
 
   @IsNumber()

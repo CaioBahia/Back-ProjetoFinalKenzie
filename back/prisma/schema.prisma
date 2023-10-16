@@ -34,8 +34,8 @@ model Anouncement {
   fuel        String
   km          Int
   color       String
-  fipe        Decimal?
-  price       Decimal
+  fipe        Int
+  price       Int
   description String
   adStatus    Boolean
   user        User       @relation(fields: [user_id], references: [id])
