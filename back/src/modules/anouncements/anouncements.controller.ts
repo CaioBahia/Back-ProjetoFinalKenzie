@@ -45,16 +45,20 @@ export class AnouncementsController {
     return this.anouncementsService.findAll();
   }
 
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findbyid(@Param('id') id: string) {
     return this.anouncementsService.findById(id);
   }
-
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get('user/:id')
   findAdByUser(@Param('id') userId: string) {
     return this.anouncementsService.findByUserId(userId);
   }
-
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -62,7 +66,8 @@ export class AnouncementsController {
   ) {
     return this.anouncementsService.update(updateAnouncementDto, id);
   }
-
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.anouncementsService.remove(id);
