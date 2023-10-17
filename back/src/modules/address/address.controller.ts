@@ -28,7 +28,7 @@ export class AddressController {
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  @Get(':id')
+  @Get('user/:id')
   findByUser(@Param('id') user_id: string) {
     return this.addressService.findByUser(user_id);
   }
