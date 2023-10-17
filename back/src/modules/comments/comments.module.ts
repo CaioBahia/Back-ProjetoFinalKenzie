@@ -18,6 +18,6 @@ import { AnouncementsService } from '../anouncements/anouncements.service';
       useClass: CommentPrismaRepository,
     },
   ],
-  exports: [AnouncementsService],
+  exports: [CommentsService],
 })
 export class CommentsModule {}
