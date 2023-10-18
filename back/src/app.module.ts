@@ -4,6 +4,7 @@ import { AnouncementsModule } from './modules/anouncements/anouncements.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AddressModule } from './modules/address/address.module';
 import { CommentsModule } from './modules/comments/comments.module';
+import { ImagesModule } from './modules/images/images.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { CommentsModule } from './modules/comments/comments.module';
     AuthModule,
     AddressModule,
     CommentsModule,
+    ImagesModule,
   ],
   controllers: [],
   providers: [],
