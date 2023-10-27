@@ -15,6 +15,7 @@ CREATE TABLE "Users" (
 -- CreateTable
 CREATE TABLE "Anouncement" (
     "id" TEXT NOT NULL,
+    "cover_img" TEXT,
     "brand" TEXT NOT NULL,
     "model" TEXT NOT NULL,
     "year" TEXT NOT NULL,
@@ -25,7 +26,6 @@ CREATE TABLE "Anouncement" (
     "price" INTEGER NOT NULL,
     "description" TEXT NOT NULL,
     "adStatus" BOOLEAN NOT NULL,
-    "cover_img_url" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
 
     CONSTRAINT "Anouncement_pkey" PRIMARY KEY ("id")

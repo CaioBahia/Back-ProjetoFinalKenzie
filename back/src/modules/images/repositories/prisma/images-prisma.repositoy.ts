@@ -9,6 +9,7 @@ export class ImagesPrismaRepository implements ImagesRepository {
   async create(data: CreateImageDto, anouncement_id: string): Promise<Image> {
     const newImage = new Image();
     Object.assign(newImage, { ...data });
+
     const CreateImage = await this.prisma.images.create({
       data: {
         id: newImage.id,
