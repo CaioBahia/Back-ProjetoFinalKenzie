@@ -54,7 +54,7 @@ export class CreateAnouncementDto {
   adStatus: boolean;
 
   @IsString()
-  @IsUrl()
-  @IsNotEmpty()
-  cover_imgurl: string;
+  // @IsUrl()
+  // @IsNotEmpty()
+  cover_img: string;
 }

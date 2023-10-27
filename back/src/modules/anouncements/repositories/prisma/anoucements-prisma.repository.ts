@@ -15,11 +15,12 @@ export class AnouncementPrismaRepository implements AnouncementsRepository {
     user_id: string,
   ): Promise<Anouncement> {
     const ads = new Anouncement();
-
     Object.assign(ads, { ...data });
+    console.log(ads);
     const newAds = await this.prisma.anouncement.create({
       data: {
         id: ads.id,
+        cover_img: ads.cover_img,
         brand: ads.brand,
         model: ads.model,
         year: ads.year,
@@ -30,11 +31,9 @@ export class AnouncementPrismaRepository implements AnouncementsRepository {
         price: ads.price,
         description: ads.description,
         adStatus: ads.adStatus,
-        cover_img_url: ads.cover_img_url,
         user_id,
       },
     });
-    console.log('OIOIOIOIOI');
     return newAds;
   }
 

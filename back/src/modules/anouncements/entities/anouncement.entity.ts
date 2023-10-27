@@ -13,7 +13,7 @@ export class Anouncement {
   description: string;
   adStatus: boolean;
   user_id: string;
-  cover_img_url: string;
+  cover_img: string;
 
   constructor() {
     this.id = randomUUID();
