@@ -1,26 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { CreateImageDto } from './dto/create-image.dto';
-import { UpdateImageDto } from './dto/update-image.dto';
+
+import { ImagesRepository } from './repositories/images.repository';
 
 @Injectable()
 export class ImagesService {
-  create(createImageDto: CreateImageDto) {
-    return 'This action adds a new image';
+  constructor(private imagesRepository: ImagesRepository) {}
+
+  async create(data: CreateImageDto, anouncement_id: string) {
+    const image = await this.imagesRepository.create(data, anouncement_id);
+    return image;
   }
 
-  findAll() {
-    return `This action returns all images`;
+  async findByAd(anouncement_id: string) {
+    const images = await this.imagesRepository.findByAd(anouncement_id);
+    return images;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} image`;
-  }
-
-  update(id: number, updateImageDto: UpdateImageDto) {
-    return `This action updates a #${id} image`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} image`;
+  async remove(id: string) {
+    await this.imagesRepository.remove(id);
   }
 }

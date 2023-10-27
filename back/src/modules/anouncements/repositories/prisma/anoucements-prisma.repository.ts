@@ -15,6 +15,7 @@ export class AnouncementPrismaRepository implements AnouncementsRepository {
     user_id: string,
   ): Promise<Anouncement> {
     const ads = new Anouncement();
+
     Object.assign(ads, { ...data });
     const newAds = await this.prisma.anouncement.create({
       data: {
@@ -33,6 +34,7 @@ export class AnouncementPrismaRepository implements AnouncementsRepository {
         user_id,
       },
     });
+    console.log('OIOIOIOIOI');
     return newAds;
   }
 
