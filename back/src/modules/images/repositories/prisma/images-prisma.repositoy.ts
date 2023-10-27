@@ -2,7 +2,9 @@ import { PrismaService } from 'src/modules/database/prisma.service';
 import { ImagesRepository } from '../images.repository';
 import { Image } from '../../entities/image.entity';
 import { CreateImageDto } from '../../dto/create-image.dto';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class ImagesPrismaRepository implements ImagesRepository {
   constructor(private prisma: PrismaService) {}
 
