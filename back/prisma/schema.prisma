@@ -16,7 +16,7 @@ model User {
   email       String        @unique
   cpf         String
   phone       String
-  birth   String 
+  birth       String
   type        String
   password    String
   Anouncement Anouncement[]
@@ -27,21 +27,22 @@ model User {
 }
 
 model Anouncement {
-  id          String     @id
-  brand       String
-  model       String
-  year        String
-  fuel        String
-  km          Int
-  color       String
-  fipe        Int
-  price       Int
-  description String
-  adStatus    Boolean
-  user        User       @relation(fields: [user_id], references: [id])
-  user_id     String
-  Comments    Comments[]
-  images      images[]
+  id            String     @id
+  brand         String
+  model         String
+  year          String
+  fuel          String
+  km            Int
+  color         String
+  fipe          Int
+  price         Int
+  description   String
+  adStatus      Boolean
+  cover_img_url String
+  user          User       @relation(fields: [user_id], references: [id])
+  user_id       String
+  Comments      Comments[]
+  images        images[]
 }
 
 model Address {
@@ -67,13 +68,7 @@ model Comments {
 
 model images {
   id             String      @id
-  cover_url      String
-  img_url1       String?
-  img_url2       String?
-  img_url3       String?
-  img_url4       String?
-  img_url5       String?
-  img_url6       String?
+  img_url        String
   anouncement    Anouncement @relation(fields: [anouncement_id], references: [id])
   anouncement_id String
 }

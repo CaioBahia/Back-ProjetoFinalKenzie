@@ -29,6 +29,7 @@ export class AnouncementPrismaRepository implements AnouncementsRepository {
         price: ads.price,
         description: ads.description,
         adStatus: ads.adStatus,
+        cover_img_url: ads.cover_img_url,
         user_id,
       },
     });

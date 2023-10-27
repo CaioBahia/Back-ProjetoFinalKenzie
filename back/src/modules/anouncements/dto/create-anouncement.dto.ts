@@ -4,6 +4,7 @@ import {
   MaxLength,
   IsBoolean,
   IsNumber,
+  IsUrl,
 } from 'class-validator';
 
 export class CreateAnouncementDto {
@@ -51,4 +52,9 @@ export class CreateAnouncementDto {
   @IsBoolean()
   @IsNotEmpty()
   adStatus: boolean;
+
+  @IsString()
+  @IsUrl(undefined, { message: 'URL is not valid' })
+  @IsNotEmpty()
+  cover_img_url: string;
 }

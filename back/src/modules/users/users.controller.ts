@@ -8,6 +8,7 @@ import {
   Delete,
   HttpCode,
   UseGuards,
+  Request,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -39,11 +40,11 @@ export class UsersController {
     return this.usersService.findById(id);
   }
 
-  @Patch(':id')
+  @Patch('')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(updateUserDto, id);
+  update(@Body() updateUserDto: UpdateUserDto, @Request() req) {
+    return this.usersService.update(updateUserDto, req.user.id);
   }
 
   @HttpCode(204)
