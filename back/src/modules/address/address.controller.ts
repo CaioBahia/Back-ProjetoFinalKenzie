@@ -35,8 +35,9 @@ export class AddressController {
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  @Patch(':id')
-  update(@Body() updateAddressDto: UpdateAddressDto, @Param('id') id: string) {
-    return this.addressService.update(updateAddressDto, id);
+  @Patch('')
+  async update(@Body() updateAddressDto: UpdateAddressDto, @Request() req) {
+    const user = await this.addressService.findByUser(req.user.id);
+    return this.addressService.update(updateAddressDto, user.id);
   }
 }

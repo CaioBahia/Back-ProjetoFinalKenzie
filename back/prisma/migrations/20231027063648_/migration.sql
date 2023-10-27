@@ -21,10 +21,11 @@ CREATE TABLE "Anouncement" (
     "fuel" TEXT NOT NULL,
     "km" INTEGER NOT NULL,
     "color" TEXT NOT NULL,
-    "fipe" DECIMAL(65,30),
-    "price" DECIMAL(65,30) NOT NULL,
+    "fipe" INTEGER NOT NULL,
+    "price" INTEGER NOT NULL,
     "description" TEXT NOT NULL,
     "adStatus" BOOLEAN NOT NULL,
+    "cover_img_url" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
 
     CONSTRAINT "Anouncement_pkey" PRIMARY KEY ("id")
@@ -57,13 +58,7 @@ CREATE TABLE "Comments" (
 -- CreateTable
 CREATE TABLE "images" (
     "id" TEXT NOT NULL,
-    "cover_url" TEXT NOT NULL,
-    "img_url1" TEXT,
-    "img_url2" TEXT,
-    "img_url3" TEXT,
-    "img_url4" TEXT,
-    "img_url5" TEXT,
-    "img_url6" TEXT,
+    "img_url" TEXT NOT NULL,
     "anouncement_id" TEXT NOT NULL,
 
     CONSTRAINT "images_pkey" PRIMARY KEY ("id")
