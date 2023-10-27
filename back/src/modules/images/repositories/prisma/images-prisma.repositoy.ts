@@ -7,13 +7,13 @@ export class ImagesPrismaRepository implements ImagesRepository {
   constructor(private prisma: PrismaService) {}
 
   async create(data: CreateImageDto, anouncement_id: string): Promise<Image> {
-    const newImage = new Image();
-    Object.assign(newImage, { ...data });
+    const image = new Image();
+    Object.assign(image, { ...data });
 
     const CreateImage = await this.prisma.images.create({
       data: {
-        id: newImage.id,
-        img_url: newImage.img_url,
+        id: image.id,
+        img_url: image.img_url,
         anouncement_id,
       },
     });
@@ -23,9 +23,10 @@ export class ImagesPrismaRepository implements ImagesRepository {
     const images = await this.prisma.images.findMany({
       where: { anouncement_id },
     });
+    console.log(images);
     return images;
   }
   async remove(id: string): Promise<void> {
-    await this.prisma.comments.delete({ where: { id } });
+    await this.prisma.images.delete({ where: { id } });
   }
 }
