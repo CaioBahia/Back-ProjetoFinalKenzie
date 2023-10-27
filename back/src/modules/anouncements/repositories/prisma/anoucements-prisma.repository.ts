@@ -16,7 +16,7 @@ export class AnouncementPrismaRepository implements AnouncementsRepository {
   ): Promise<Anouncement> {
     const ads = new Anouncement();
     Object.assign(ads, { ...data });
-    console.log(ads);
+
     const newAds = await this.prisma.anouncement.create({
       data: {
         id: ads.id,

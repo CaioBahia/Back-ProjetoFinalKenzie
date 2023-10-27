@@ -48,10 +48,10 @@ export class UsersController {
   }
 
   @HttpCode(204)
-  @Delete(':id')
+  @Delete('')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(id);
+  remove(@Request() req) {
+    return this.usersService.remove(req.user.id);
   }
 }

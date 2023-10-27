@@ -42,7 +42,7 @@ model Anouncement {
   user          User       @relation(fields: [user_id], references: [id])
   user_id       String
   Comments      Comments[]
-  images        images[]
+  images        Images[]
 }
 
 model Address {
@@ -66,7 +66,7 @@ model Comments {
   anouncement_id String
 }
 
-model images {
+model Images {
   id             String      @id
   img_url        String
   anouncement    Anouncement @relation(fields: [anouncement_id], references: [id])

@@ -9,6 +9,7 @@ export class ImagesService {
 
   async create(data: CreateImageDto, anouncement_id: string) {
     const image = await this.imagesRepository.create(data, anouncement_id);
+    console.log(image);
     return image;
   }
 
