@@ -54,7 +54,7 @@ export class CreateAnouncementDto {
   adStatus: boolean;
 
   @IsString()
-  @IsUrl(undefined, { message: 'URL is not valid' })
-  @IsNotEmpty()
-  cover_img_url: string;
+  // @IsUrl()
+  // @IsNotEmpty()
+  cover_img: string;
 }

@@ -28,6 +28,7 @@ model User {
 
 model Anouncement {
   id            String     @id
+  cover_img String?    
   brand         String
   model         String
   year          String
@@ -38,7 +39,6 @@ model Anouncement {
   price         Int
   description   String
   adStatus      Boolean
-  cover_img_url String
   user          User       @relation(fields: [user_id], references: [id])
   user_id       String
   Comments      Comments[]

@@ -1,34 +1,40 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { ImagesService } from './images.service';
 import { CreateImageDto } from './dto/create-image.dto';
-import { UpdateImageDto } from './dto/update-image.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('images')
 export class ImagesController {
   constructor(private readonly imagesService: ImagesService) {}
 
-  @Post()
-  create(@Body() createImageDto: CreateImageDto) {
-    return this.imagesService.create(createImageDto);
+  @Post(':anouncement_id')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  create(
+    @Body() data: CreateImageDto,
+    @Param('anouncement_id') anouncement_id: string,
+  ) {
+    return this.imagesService.create(data, anouncement_id);
   }
 
-  @Get()
-  findAll() {
-    return this.imagesService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.imagesService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateImageDto: UpdateImageDto) {
-    return this.imagesService.update(+id, updateImageDto);
+  @Get('anouncement/:anouncement_id')
+  findOne(@Param('anouncement_id') anouncement_id: string) {
+    return this.imagesService.findByAd(anouncement_id);
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string) {
-    return this.imagesService.remove(+id);
+    return this.imagesService.remove(id);
   }
 }

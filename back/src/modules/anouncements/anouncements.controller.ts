@@ -25,19 +25,16 @@ export class AnouncementsController {
     private userService: UsersService,
   ) {}
 
-  @Post('')
+  @Post()
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  async create(
-    @Body() createAnouncementDto: CreateAnouncementDto,
-    @Request() req,
-  ) {
+  async create(@Body() data: CreateAnouncementDto, @Request() req) {
     const findUserType = await this.userService.findById(req.user.id);
 
     if (findUserType.type === 'comprador') {
       throw new ForbiddenException('Invalid Account Type!');
     }
-    return this.anouncementsService.create(createAnouncementDto, req.user.id);
+    return this.anouncementsService.create(data, req.user.id);
   }
 
   @Get()

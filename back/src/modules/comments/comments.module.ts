@@ -5,7 +5,6 @@ import { UsersModule } from '../users/users.module';
 import { PrismaService } from '../database/prisma.service';
 import { CommentsRepository } from './repositories/comments.repository';
 import { CommentPrismaRepository } from './repositories/prisma/comments-prisma.repository';
-import { AnouncementsService } from '../anouncements/anouncements.service';
 
 @Module({
   imports: [UsersModule],
