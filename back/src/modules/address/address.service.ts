@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateAddressDto } from './dto/create-address.dto';
 import { UpdateAddressDto } from './dto/update-address.dto';
 import { AddressRepository } from './repositories/address.repository';
@@ -8,11 +12,15 @@ export class AddressService {
   constructor(private addressRepository: AddressRepository) {}
 
   async create(createAddressDto: CreateAddressDto, user_id: string) {
+    const objectExists = await this.addressRepository.findByUser(user_id);
+    if (objectExists) {
+      throw new ConflictException('Address Alredy Registered!');
+    }
+
     const address = await this.addressRepository.create(
       createAddressDto,
       user_id,
     );
-
     return address;
   }
 

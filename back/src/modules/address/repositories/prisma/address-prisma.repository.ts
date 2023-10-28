@@ -12,7 +12,7 @@ export class AddressPrismaRepository implements AddressRepository {
   async create(data: CreateAddressDto, user_id: string): Promise<Address> {
     const address = new Address();
     Object.assign(address, { ...data });
-    const CreateAddress = await this.prisma.address.create({
+    const createAddress = await this.prisma.address.create({
       data: {
         id: address.id,
         zipcode: address.zipcode,
@@ -24,7 +24,8 @@ export class AddressPrismaRepository implements AddressRepository {
         user_id,
       },
     });
-    return CreateAddress;
+
+    return createAddress;
   }
 
   async findByUser(user_id: string): Promise<Address> {

@@ -4,7 +4,6 @@ import {
   MaxLength,
   IsBoolean,
   IsNumber,
-  IsUrl,
 } from 'class-validator';
 
 export class CreateAnouncementDto {
