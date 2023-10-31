@@ -39,12 +39,17 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const { token } = response.data;
 
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
-      localStorage.setItem("your-todolist:token", token);
+      localStorage.setItem("motors-shop:token", token);
 
-      navigate("dashboard");
+      navigate("homepage");
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const logout = () => {
+    localStorage.removeItem("motors-shop:token");
+    navigate("/");
   };
 
   return (
