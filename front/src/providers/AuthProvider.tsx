@@ -41,8 +41,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem("@motors-shop:token", token);
+      console.log(token);
 
-      navigate("homepage");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
