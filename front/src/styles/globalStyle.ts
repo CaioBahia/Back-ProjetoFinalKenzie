@@ -6,7 +6,15 @@ export default createGlobalStyle`
     --color-brand-2: #5126EA;
     --color-brand-3: #80A6F0;
     --color-brand-4: #EDEAFD;
+    
+    --color-alert-1: #CD2B31;
+    --color-alert-2: #FDD8D8;
+    --color-alert-3: #FFE5E5;
 
+    --color-sucess-1: #18794E;
+    --color-sucess-2: #CCEBD7;
+    --color-sucess-3: #DDF3E4;
+    
     --color-grey-scale-grey-0: #0b0d0d;
     --color-grey-scale-grey-1: #212529;
     --color-grey-scale-grey-2: #495057;
@@ -33,13 +41,6 @@ export default createGlobalStyle`
     --color-random-11: #5700E3;
     --color-random-12: #30007D;
 
-    --color-alert-1: #CD2B31;
-    --color-alert-2: #FDD8D8;
-    --color-alert-3: #FFE5E5;
-
-    --color-sucess-1: #18794E;
-    --color-sucess-2: #CCEBD7;
-    --color-sucess-3: #DDF3E4;
 
   }
 
