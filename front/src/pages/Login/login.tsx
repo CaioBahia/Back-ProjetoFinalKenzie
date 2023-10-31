@@ -4,9 +4,11 @@ import { loginData, schema } from "./validator";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export const LoginPage = () => {
+
   const { register, handleSubmit } = useForm<loginData>({
     resolver: zodResolver(schema),
   });
+  
   return (
     <main>
       <h2>Login</h2>
