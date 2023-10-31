@@ -7,18 +7,18 @@ export default createGlobalStyle`
     --color-brand-3: #80A6F0;
     --color-brand-4: #EDEAFD;
 
-    --color-gray-0: #080D0D;
-    --color-gray-1: #212529;
-    --color-gray-2: #495057;
-    --color-gray-3: #868E96;
-    --color-gray-4: #ADB5BD;
-    --color-gray-5: #CED4DA;
-    --color-gray-6: #DEE2E6;
-    --color-gray-7: #E9ECEF;
-    --color-gray-8: #F1F3F5;
-    --color-gray-9: #F8F9FA;
-    --color-gray-10: #FDFDFD;
-    --color-white-fixed: #FFFFFF;
+    --color-grey-scale-grey-0: #0b0d0d;
+    --color-grey-scale-grey-1: #212529;
+    --color-grey-scale-grey-2: #495057;
+    --color-grey-scale-grey-3: #868e96;
+    --color-grey-scale-grey-4: #adb5bd;
+    --color-grey-scale-grey-5: #ced4da;
+    --color-grey-scale-grey-6: #dee2e6;
+    --color-grey-scale-grey-7: #e9ecef;
+    --color-grey-scale-grey-8: #f1f3f5;
+    --color-grey-scale-grey-9: #f8f9fa;
+    --color-grey-scale-grey-10: #fdfdfd;
+    --color-colors-fixed-white-fixed: #ffffff;
 
     --color-random-1: #E34D8C;
     --color-random-2: #C04277;
@@ -36,71 +36,18 @@ export default createGlobalStyle`
     --color-alert-1: #CD2B31;
     --color-alert-2: #FDD8D8;
     --color-alert-3: #FFE5E5;
+
     --color-sucess-1: #18794E;
     --color-sucess-2: #CCEBD7;
     --color-sucess-3: #DDF3E4;
 
-    --heading-1-700-font-weight: 700;
-    --heading-1-700-font-size: 44px;
-
-    --heading-2-600-font-weight: 600;
-    --heading-2-600-font-size: 36px;
-
-    --heading-3-600-font-weight: 600;
-    --heading-3-600-font-size: 32px;
-
-    --heading-3-500-font-weight: 500;
-    --heading-3-500-font-size: 32px;
-
-    --heading-4-600-font-weight: 600;
-    --heading-4-600-font-size: 28px;
-
-    --heading-4-500-font-weight: 500;
-    --heading-4-500-font-size: 28px;
-
-    --heading-5-600-font-weight: 600;
-    --heading-5-600-font-size: 24px;
-
-    --heading-5-500-font-weight: 500;
-    --heading-5-500-font-size: 24px;
-
-    --heading-6-600-font-weight: 600;
-    --heading-6-600-font-size: 20px;
-
-    --heading-6-500-font-weight: 500;
-    --heading-6-500-font-size: 20px;
-
-    --heading-7-600-font-weight: 600;
-    --heading-7-600-font-size: 16px;
-
-    --heading-7-500-font-weight: 500;
-    --heading-7-500-font-size: 16px;
-
-    --body-1-400-font-weight: 400;
-    --body-1-400-font-size: 16px;
-
-    --body-1-600-font-weight: 400;
-    --body-1-600-font-size: 16px;
-
-    --body-2-400-font-weight: 400;
-    --body-2-400-font-size: 14px;
-
-    --body-2-500-font-weight: 500;
-    --body-2-500-font-size: 14px;
-
-    --button-big-text-font-weight: 600;
-    --button-big-text-font-size: 16px;
-
-    --button-medium-text-font-weight: 600;
-    --button-medium-text-font-size: 14px;
-
-    --input-placeholder-font-weight: 400;
-    --input-placeholder-font-size: 16px;
-
-    --input-label-font-weight: 500;
-    --input-label-font-size: 14px; 
   }
 
+  @media (min-width: 700px) {
+    :root {
+      font-size: 62.5%; // root font-size: 10px;
+    }
+  }
   
   * {
     margin:0;
@@ -112,6 +59,23 @@ export default createGlobalStyle`
   body,html{
     width: 100vw;
     height: 100vh;
+  }
+
+  body {
+    background: var(--color-gray-900);
+    color: var(--color-gray-300);
+    -webkit-font-smoothing: antialiased;
+
+    overflow-x: hidden;
+  }
+
+  body, input, button, textarea {
+    font-family: 'Inter';
+    font-size: 1.6rem;
+  }
+
+  h1, h2, h3, h4, h5, h6, strong{
+    font-weight: 500;
   }
 
   button {
