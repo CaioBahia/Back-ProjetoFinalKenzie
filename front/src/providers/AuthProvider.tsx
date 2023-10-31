@@ -11,6 +11,7 @@ interface AuthProviderProps {
 interface AuthContextValues {
   signIn: (data: loginData) => void;
   loading: boolean;
+  logout: () => void;
 }
 
 export const AuthContext = createContext<AuthContextValues>(
@@ -22,7 +23,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("motors-shop:token");
+    const token = localStorage.getItem("@motors-shop:token");
     if (!token) {
       setLoading(false);
       return;
@@ -39,21 +40,22 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const { token } = response.data;
 
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
-      localStorage.setItem("motors-shop:token", token);
+      localStorage.setItem("@motors-shop:token", token);
+      console.log(token);
 
-      navigate("homepage");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
   };
 
   const logout = () => {
-    localStorage.removeItem("motors-shop:token");
+    localStorage.removeItem("@motors-shop:token");
     navigate("/");
   };
 
   return (
-    <AuthContext.Provider value={{ signIn, loading }}>
+    <AuthContext.Provider value={{ signIn, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

@@ -15,13 +15,13 @@ export const RoutesMain = () => {
       {/* login */}
       <Route path="/login" element={<LoginPage />} />
       {/*  Register */}
-      <Route path="" element={<RegisterPage />} />
+      <Route path="/register" element={<RegisterPage />} />
       {/* Product */}
-      <Route path="" element={<ProductPage />} />
+      <Route path="/product" element={<ProductPage />} />
       {/* Profile */}
-      <Route path="" element={<ProfilePage />} />
+      <Route path="/profile" element={<ProfilePage />} />
       {/* 404 */}
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path="/*" element={<NotFoundPage />} />
     </Routes>
   );
 };

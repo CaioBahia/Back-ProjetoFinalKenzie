@@ -1,3 +1,5 @@
+import React from "react";
+import { AuthProvider } from "./providers/AuthProvider";
 import { RoutesMain } from "./routes";
 import GlobalStyle from "./styles/globalStyle";
 
@@ -5,7 +7,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <RoutesMain />
+      <AuthProvider>
+        <RoutesMain />
+      </AuthProvider>
     </>
   );
 }
