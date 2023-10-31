@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { loginData } from "../pages/Login/validator";
+import { loginData } from "../pages/LoginPage/validator";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 
