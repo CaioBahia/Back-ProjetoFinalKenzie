@@ -1,6 +1,8 @@
+import React from "react";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { loginData } from "../pages/Login/validator";
 import { useNavigate } from "react-router-dom";
+import { api } from "../services/api";
 
 interface AuthProviderProps {
   children: ReactNode;
